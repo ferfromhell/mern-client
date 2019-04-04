@@ -5,6 +5,8 @@ import PostForm from './PostForm';
 import Loading from '../Loading';
 import PostFeed from './PostFeed';
 
+// import CanvasDraw from 'react-canvas-draw';
+
 import { getPosts } from '../../actions/postActions';
 
 
@@ -25,8 +27,10 @@ class Posts extends Component {
     }
 
     return (
-      <div>
-        <PostForm/>
+      <div style={{height: '100vh', width: '99%', margin: "5px auto"}}>
+        <div style={{ }}>
+          <PostForm/>
+        </div>
         {postContent}
       </div>
     )

@@ -17,26 +17,26 @@ class RecentActivity extends Component {
     const { activities }= this.props.noti;
 
     return (
-      <Card>
-    <Card.Content>
-      <Card.Header>Recent Activity</Card.Header>
-    </Card.Content>
-    <Card.Content>
-      <Feed>
-        {activities.map((activity,index) => 
-          <Feed.Event key={index}>
-            <Feed.Label image={activity.avatar} />
-            <Feed.Content>
-            <Feed.Date content={activity.at} />
-              <Feed.Summary>
-                {`${activity.user} has ${activity.action}`}
-              </Feed.Summary>
-            </Feed.Content>
-        </Feed.Event>
-        )}
-      </Feed>
-    </Card.Content>
-  </Card>
+    <Card>
+      <Card.Content>
+        <Card.Header>Recent Activity</Card.Header>
+      </Card.Content>
+      <Card.Content>
+        <Feed>
+          {activities.slice(0, 20).map((activity,index) => 
+            <Feed.Event key={index}>
+              <Feed.Label image={activity.avatar} />
+              <Feed.Content>
+              <Feed.Date content={activity.at} />
+                <Feed.Summary>
+                  {`${activity.user} has ${activity.action}`}
+                </Feed.Summary>
+              </Feed.Content>
+          </Feed.Event>
+          )}
+        </Feed>
+      </Card.Content>
+    </Card>
     )
   }
 }

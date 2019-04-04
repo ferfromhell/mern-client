@@ -77,6 +77,14 @@ class Navbar extends Component {
           />
           <Menu.Item
             as={ Link }
+            to='/posts'
+            name='posts'
+            active={activeItem === 'posts'}
+            content='Posts'
+            onClick={this.handleItemClick}
+          />
+          <Menu.Item
+            as={ Link }
             to='/chat'
             name='chat'
             active={activeItem === 'chat'}

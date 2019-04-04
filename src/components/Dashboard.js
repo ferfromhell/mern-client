@@ -10,6 +10,7 @@ import { getCurrentProfile } from '../actions/profileActions';
 import Loading from './Loading';
 import OnlineUser from './utils/OnlineUser';
 import RecentActivity from './utils/RecentActivity';
+import Posts from './posts/Posts';
 import { Button } from 'semantic-ui-react';
 
 
@@ -60,20 +61,21 @@ class Dashboard extends Component {
     }
     return (
       <div>
-        <Grid columns={2}>
-          <Grid.Row>
-            <Grid.Column width={3}>
-              <Grid.Row>
-                <Segment>
-                  {dashboardContent}
-                </Segment>
+        <Grid columns={3} style={{height: '100vh'}}>
+          <Grid.Row style={{height: '100%'}}>
+            <Grid.Column width={4} stretched>
+              <Grid.Row style={{height: '90%'}}>                
+                  <Segment raised>{dashboardContent}</Segment>
               </Grid.Row>
-              <Grid.Row>
-                <RecentActivity/>
+              <Grid.Row style={{height: '10%'}}>                
+                <OnlineUser/>  
               </Grid.Row>
             </Grid.Column>
-            <Grid.Column width={13}>
-              <OnlineUser/>
+            <Grid.Column width={8} stretched style={{height: '100%', overflowY:'auto'}}>
+              <Posts/>
+            </Grid.Column>
+            <Grid.Column width={4} stretched style={{height: '100%', overflowY:'auto'}}>
+            <Segment raised><RecentActivity/></Segment>
             </Grid.Column>
           </Grid.Row>
       </Grid>

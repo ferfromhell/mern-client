@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { Grid, Card, Button, Image } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
+import CanvasDraw from 'react-canvas-draw';
 import { deletePost, addLike } from '../../actions/postActions';
 
 
@@ -17,7 +18,7 @@ class PostItem extends Component {
   }
   findMyLike(likes){
     const { auth } = this.props;
-    console.log(likes);
+    // console.log(likes);
     if(likes === undefined){
       return 'grey'
     }else{
@@ -30,9 +31,10 @@ class PostItem extends Component {
   }
   render() {
     const {post, auth} = this.props;
+    console.log(post);
     let likes = post.likes? post.likes.length: 0; 
     return (
-      <Card>
+      <Card fluid>
         <Card.Content>
           <Image floated='right' size='mini' src={post.avatar} />
           <Card.Header>{post.tittle}</Card.Header>
@@ -41,6 +43,14 @@ class PostItem extends Component {
             {post.text}
           </Card.Description>
         </Card.Content>
+        {console.log(post.draw)}
+        {post.draw !== undefined? (
+          <CanvasDraw 
+          disabled
+          hideGrid
+          ref={canvasDraw => (this.loadableCanvas = canvasDraw)}
+          saveData= {post.draw}/>
+        ):null}        
         <Card.Content extra>
           <Grid>
             <Grid.Column floated='left' width={4}>
