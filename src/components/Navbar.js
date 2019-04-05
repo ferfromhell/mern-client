@@ -83,14 +83,14 @@ class Navbar extends Component {
             content='Posts'
             onClick={this.handleItemClick}
           />
-          <Menu.Item
+          {/* <Menu.Item
             as={ Link }
             to='/chat'
             name='chat'
             active={activeItem === 'chat'}
             content='ChatRoom'
             onClick={this.handleItemClick}
-          />
+          /> */}
           {isAuthenticated ? authLinks:guestLinks}
         </Menu>
       </div>
